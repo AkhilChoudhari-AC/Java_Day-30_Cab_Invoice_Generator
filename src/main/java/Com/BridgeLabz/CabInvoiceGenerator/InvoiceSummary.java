@@ -1,6 +1,10 @@
 package Com.BridgeLabz.CabInvoiceGenerator;
 
 public class InvoiceSummary {
+
+    /**
+     * declaring variables given for InvoiceSumamry
+     */
     public int numOfRides;
     public double totalFare;
     public double avgFare;
