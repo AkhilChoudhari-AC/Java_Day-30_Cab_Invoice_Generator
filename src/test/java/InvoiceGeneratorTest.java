@@ -1,8 +1,7 @@
-
-
 import static org.junit.Assert.assertEquals;
 
 import Com.BridgeLabz.CabInvoiceGenerator.InvoiceGenerator;
+import Com.BridgeLabz.CabInvoiceGenerator.InvoiceSummary;
 import Com.BridgeLabz.CabInvoiceGenerator.Ride;
 import org.junit.Before;
 import org.junit.Test;
@@ -36,8 +35,8 @@ public class InvoiceGeneratorTest {
 
     @Test
     /**
-     * created method for calculating the total fare by giving distance and time for
-     * the total fare will be less than 10
+     * created method for calculating the fare by giving distance and time for the
+     * total fare will be less than 10 will gives the Minimum fare
      */
     public void givenDistanceAndTime_WhenTotalFareLessThan10_ShouldReturnMinimumFare() {
         double distance = 0.1;
@@ -54,5 +53,17 @@ public class InvoiceGeneratorTest {
         Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
         double fare = invoiceGenerator.calculateFare(rides);
         assertEquals(30, fare, 0.0);
+    }
+
+    @Test
+    /**
+     * created method givenMultipleRidesShouldReturnRideSummary() here given
+     * multiple rides should return the ride summary
+     */
+    public void givenMultipleRidesShouldReturnRideSummary() {
+        Ride[] rides = { new Ride(2.0, 5), new Ride(0.1, 1) };
+        InvoiceSummary summary = invoiceGenerator.getInvoiceSummary(rides);
+        InvoiceSummary expectedSummary = new InvoiceSummary(2, 30.0);
+        assertEquals(expectedSummary, summary);
     }
 }
